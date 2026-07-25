@@ -1,0 +1,6 @@
+{
+  "name": "The Furnish Studio",
+  "description": "Warm, premium editorial furniture e-commerce experience with interactive shopping, cart, wishlist, user profile, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
