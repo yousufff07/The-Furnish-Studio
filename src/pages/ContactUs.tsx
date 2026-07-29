@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { FAQ_ITEMS } from '../data/mockData';
+import SplitText from '../components/common/SplitText';
 import { Mail, Phone, MapPin, Clock, Send, ChevronDown, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const ContactUs: React.FC = () => {
@@ -48,9 +49,7 @@ export const ContactUs: React.FC = () => {
         <div className="lg:col-span-5 space-y-8">
           
           <div className="bg-[#F3E5D8] p-8 rounded-3xl border border-[#EBD8C6] shadow-md space-y-6">
-            <h3 className="font-serif font-bold text-2xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]">
-              Flagship Showrooms
-            </h3>
+            <SplitText text="Flagship Showrooms" tag="h3" className="font-serif font-bold text-2xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]" />
 
             <div className="space-y-4 text-sm font-sans">
               <div className="flex items-start gap-3.5">
@@ -107,7 +106,7 @@ export const ContactUs: React.FC = () => {
         {/* Right: Contact Form (Col 7) */}
         <div className="lg:col-span-7">
           <div className="bg-[#F3E5D8]/60 p-8 sm:p-10 rounded-3xl border border-[#EBD8C6] shadow-sm">
-            <h2 className="font-serif font-bold text-2xl text-[#1E1A17] mb-2">Send an Inquiry</h2>
+            <SplitText text="Send an Inquiry" tag="h2" className="font-serif font-bold text-2xl text-[#1E1A17] mb-2" />
             <p className="text-xs text-[#8D9399] mb-8 font-sans">
               Our curators respond to all correspondence within 4 business hours.
             </p>
@@ -224,7 +223,7 @@ export const ContactUs: React.FC = () => {
       <section className="max-w-4xl mx-auto pt-10 border-t border-[#EBD8C6]">
         <div className="text-center mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-1">Frequently Asked Questions</span>
-          <h2 className="font-serif text-3xl font-bold text-[#1E1A17]">Studio Policies & Logistics FAQ</h2>
+          <SplitText text="Studio Policies & Logistics FAQ" tag="h2" className="font-serif text-3xl font-bold text-[#1E1A17]" />
         </div>
 
         <div className="space-y-4">

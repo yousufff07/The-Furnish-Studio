@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import SplitText from '../components/common/SplitText';
 import { User as UserIcon, MapPin, Plus, Trash2, CheckCircle2, ShieldAlert, Package, LogOut, Edit3, Save } from 'lucide-react';
 
 export const UserProfile: React.FC = () => {
@@ -94,7 +95,7 @@ export const UserProfile: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-[#EBD8C6]">
               <h3 className="font-serif font-bold text-lg text-[#1E1A17] flex items-center gap-2">
                 <UserIcon className="w-5 h-5 text-[#964627]" />
-                <span>Patron Details</span>
+                <SplitText text="Patron Details" tag="span" />
               </h3>
               {!isEditingProfile && (
                 <button
@@ -184,7 +185,7 @@ export const UserProfile: React.FC = () => {
             <div className="flex items-center justify-between pb-4 border-b border-[#EBD8C6]">
               <h3 className="font-serif font-bold text-lg text-[#1E1A17] flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#964627]" />
-                <span>Saved Architectural Addresses ({user.addresses.length})</span>
+                <SplitText text={`Saved Architectural Addresses (${user.addresses.length})`} tag="span" />
               </h3>
               <button
                 onClick={() => setShowAddAddress(!showAddAddress)}

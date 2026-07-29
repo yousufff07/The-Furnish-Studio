@@ -1,8 +1,8 @@
 import React from 'react';
-import { FilterState, ToneColor, CategoryName } from '../../types';
+import { FilterState, CategoryName } from '../../types';
 import { useApp } from '../../context/AppContext';
+import SplitText from './SplitText';
 import { RotateCcw, Check, X } from 'lucide-react';
-import { getToneConfig } from '../../utils/toneStyles';
 
 interface FilterSidebarProps {
   filters: FilterState;
@@ -22,7 +22,6 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   const { categories } = useApp();
 
   const materialsList = ['Wood', 'Metal', 'Glass', 'Fabric', 'Leather', 'Mixed', 'Ceramic', 'Stone'];
-  const colorsList: ToneColor[] = ['rust', 'slate', 'greige'];
 
   const handleCategoryChange = (cat: string) => {
     onChange({ ...filters, category: cat });
@@ -40,19 +39,11 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
     onChange({ ...filters, materials: updated });
   };
 
-  const handleColorToggle = (col: ToneColor) => {
-    const exists = filters.colors.includes(col);
-    const updated = exists
-      ? filters.colors.filter(c => c !== col)
-      : [...filters.colors, col];
-    onChange({ ...filters, colors: updated });
-  };
-
   return (
     <div className={`space-y-6 ${isMobile ? 'p-4' : ''}`}>
       {/* Header / Reset */}
       <div className="flex items-center justify-between pb-4 border-b border-[#EBD8C6]">
-        <h3 className="font-serif font-bold text-lg text-[#1E1A17]">Refine Catalog</h3>
+        <SplitText text="Refine Catalog" tag="h3" className="font-serif font-bold text-lg text-[#1E1A17]" />
         <div className="flex items-center gap-2">
           <button
             onClick={onReset}
@@ -151,36 +142,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
         </div>
       </div>
 
-      {/* 4. Color Swatches */}
-      <div className="space-y-2.5 pt-4 border-t border-[#EBD8C6]">
-        <h4 className="font-serif font-semibold text-sm text-[#1E1A17] uppercase tracking-wider">Tone</h4>
-        <div className="flex items-center gap-3">
-          {colorsList.map(col => {
-            const isSelected = filters.colors.includes(col);
-            const toneCfg = getToneConfig(col);
-            return (
-              <button
-                key={col}
-                onClick={() => handleColorToggle(col)}
-                style={{ borderColor: isSelected ? toneCfg.hex : undefined }}
-                className={`flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold transition-all ${
-                  isSelected 
-                    ? 'bg-[#F3E5D8] ring-2 ring-offset-1 font-bold shadow-sm scale-105' 
-                    : 'border-[#EBD8C6] bg-[#F8ECE1] hover:border-[#CCA37E]'
-                }`}
-              >
-                <span 
-                  className="w-4 h-4 rounded-full border border-black/10 shadow-sm" 
-                  style={{ backgroundColor: toneCfg.hex }} 
-                />
-                <span className="text-[#1E1A17]">{toneCfg.name}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 5. Stock & Rating */}
+      {/* 4. Stock & Rating */}
       <div className="space-y-3 pt-4 border-t border-[#EBD8C6]">
         <label className="flex items-center justify-between cursor-pointer">
           <span className="text-sm font-medium text-[#1E1A17]">In Stock Only</span>

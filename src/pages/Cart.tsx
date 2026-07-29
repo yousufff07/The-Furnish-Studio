@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import SplitText from '../components/common/SplitText';
 import { ShoppingBag, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, Tag } from 'lucide-react';
-import { getToneConfig, ToneImageOverlay } from '../utils/toneStyles';
 
 export const Cart: React.FC = () => {
   const { cart, products, updateCartQuantity, removeFromCart, clearCart, navigate, cartSubtotal, deliveryFee, cartTotal, showToast } = useApp();
@@ -76,7 +76,6 @@ export const Cart: React.FC = () => {
           {cart.map((item) => {
             const prod = products.find(p => p.id === item.productId);
             if (!prod) return null;
-            const toneConfig = getToneConfig(item.selectedColor || prod.color);
 
             return (
               <div 
@@ -91,10 +90,8 @@ export const Cart: React.FC = () => {
                   <img
                     src={prod.imageUrl}
                     alt={prod.name}
-                    style={{ filter: toneConfig.imageFilter }}
                     className="w-full h-full object-cover relative z-0"
                   />
-                  <ToneImageOverlay color={item.selectedColor || prod.color} />
                 </div>
 
                 {/* Details */}
@@ -108,15 +105,6 @@ export const Cart: React.FC = () => {
                   >
                     {prod.name}
                   </h3>
-                  
-                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs text-[#1E1A17]/80">
-                    <span 
-                      className="capitalize px-2.5 py-0.5 rounded border font-semibold flex items-center gap-1 shadow-sm text-xs"
-                      style={{ backgroundColor: toneConfig.hex, color: '#F8ECE1', borderColor: toneConfig.hex }}
-                    >
-                      <span>Tone: {toneConfig.name}</span>
-                    </span>
-                  </div>
                 </div>
 
                 {/* Stepper & Price */}
@@ -172,9 +160,7 @@ export const Cart: React.FC = () => {
         {/* Right Order Summary Box (Col 4) */}
         <div className="lg:col-span-4">
           <div className="bg-[#F3E5D8]/80 rounded-3xl p-6 sm:p-8 border border-[#EBD8C6] shadow-xl sticky top-28 space-y-6">
-            <h2 className="font-serif font-bold text-xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]">
-              Order Summary
-            </h2>
+            <SplitText text="Order Summary" tag="h2" className="font-serif font-bold text-xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]" />
 
             {/* Voucher Code Form */}
             <form onSubmit={handleApplyPromo} className="space-y-2">

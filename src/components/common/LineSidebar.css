@@ -1,0 +1,71 @@
+.line-sidebar {
+  display: block;
+  user-select: none;
+  font-family: inherit;
+}
+
+.line-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-gap, 20px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.line-sidebar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-color, #c4c4c4);
+  font-size: var(--font-size, 1.1rem);
+  transition: color 0.2s ease;
+  --effect: 0;
+  padding: 4px 0;
+}
+
+.line-sidebar__item[aria-current="true"],
+.line-sidebar__item:hover {
+  color: var(--accent-color, #A855F7);
+}
+
+.line-sidebar__marker {
+  display: inline-block;
+  width: var(--marker-length, 60px);
+  height: 2px;
+  background-color: var(--marker-color, #6c6c6c);
+  margin-right: var(--marker-gap, 0px);
+  transform-origin: left center;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.line-sidebar--scale-tick .line-sidebar__marker {
+  transform: scaleX(calc(1 - (1 - var(--tick-scale, 0.5)) * (1 - var(--effect))));
+}
+
+.line-sidebar__item[aria-current="true"] .line-sidebar__marker,
+.line-sidebar__item:hover .line-sidebar__marker {
+  background-color: var(--accent-color, #A855F7);
+}
+
+.line-sidebar__label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateX(calc(var(--effect) * var(--max-shift, 30px)));
+  will-change: transform;
+}
+
+.line-sidebar__index {
+  font-family: monospace;
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+.line-sidebar__text {
+  font-weight: 500;
+  white-space: nowrap;
+}

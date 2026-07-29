@@ -14,7 +14,6 @@ export type CategoryName =
   | 'Kitchen & Dining Island'
   | 'Lounge & Lobby'
   | 'Acoustic & Studio'
-  | 'Wellness & Sanctuary'
   | 'Library & Study';
 
 export type ToneColor = 'rust' | 'slate' | 'greige';
@@ -27,8 +26,8 @@ export interface Product {
   originalPrice?: number;
   description: string;
   material: 'Wood' | 'Metal' | 'Glass' | 'Fabric' | 'Leather' | 'Mixed' | 'Ceramic' | 'Stone';
-  color: ToneColor;
-  availableColors: ToneColor[];
+  color?: ToneColor;
+  availableColors?: ToneColor[];
   stock: number;
   rating: number;
   reviewCount: number;

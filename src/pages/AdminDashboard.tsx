@@ -77,7 +77,6 @@ export const AdminDashboard: React.FC = () => {
     'Kitchen & Dining Island': 380000,
     'Lounge & Lobby': 410000,
     'Acoustic & Studio': 290000,
-    'Wellness & Sanctuary': 350000,
     'Library & Study': 275000
   };
 
@@ -333,7 +332,6 @@ export const AdminDashboard: React.FC = () => {
                     <th className="p-4">Division</th>
                     <th className="p-4">Price (INR)</th>
                     <th className="p-4">Stock</th>
-                    <th className="p-4">Tone</th>
                     <th className="p-4 text-right">Actions</th>
                   </tr>
                 </thead>
@@ -366,7 +364,6 @@ export const AdminDashboard: React.FC = () => {
                           {prod.stock} units
                         </span>
                       </td>
-                      <td className="p-4 capitalize font-semibold text-[#1E1A17]">{prod.color} Tone</td>
                       <td className="p-4 text-right space-x-2 whitespace-nowrap">
                         <button
                           onClick={() => handleOpenEditModal(prod)}
@@ -534,18 +531,6 @@ export const AdminDashboard: React.FC = () => {
                     placeholder="e.g. Solid Oak & Brass"
                     className="w-full bg-[#F3E5D8] border border-[#EBD8C6] rounded-xl p-2.5 text-sm text-[#1E1A17]"
                   />
-                </div>
-                <div>
-                  <label className="font-semibold uppercase tracking-wider text-[#8D9399] block mb-1">Tone</label>
-                  <select
-                    value={prodForm.color || 'rust'}
-                    onChange={(e) => setProdForm({ ...prodForm, color: e.target.value as ToneColor })}
-                    className="w-full bg-[#F3E5D8] border border-[#EBD8C6] rounded-xl p-2.5 text-sm font-semibold text-[#1E1A17]"
-                  >
-                    <option value="rust">Rust</option>
-                    <option value="slate">Slate</option>
-                    <option value="greige">Greige</option>
-                  </select>
                 </div>
               </div>
 

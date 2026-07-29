@@ -1,6 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import Counter from '../components/common/Counter';
+import SplitText from '../components/common/SplitText';
 import { Sparkles, ShieldCheck, TreePine, Award, ArrowRight, HeartHandshake, Compass } from 'lucide-react';
 
 export const AboutUs: React.FC = () => {
@@ -36,9 +37,7 @@ export const AboutUs: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block">Our Philosophy</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17] leading-tight">
-              Honoring the natural grain, weight, and patina of authentic materials.
-            </h2>
+            <SplitText text="Honoring the natural grain, weight, and patina of authentic materials." tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17] leading-tight" />
             <p className="text-base text-[#1E1A17]/80 leading-relaxed font-sans">
               We do not use veneers over particle board or synthetic plastic laminates. Every table leaf, chair spindle, and sideboard plinth is turned from sustainably harvested solid European white oak, American walnut, or kiln-dried ash timber.
             </p>
@@ -78,7 +77,7 @@ export const AboutUs: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-2">Pillars of Craft</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]">What Defines a Studio Piece</h2>
+            <SplitText text="What Defines a Studio Piece" tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -125,9 +124,7 @@ export const AboutUs: React.FC = () => {
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="bg-[#1E1A17] text-[#F8ECE1] rounded-3xl p-10 sm:p-16 shadow-2xl relative overflow-hidden space-y-6">
           <span className="text-xs font-mono uppercase tracking-widest text-[#CCA37E] block">Bandra West & &middot; Cyber Hub</span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Experience the tactile warmth in person.
-          </h2>
+          <SplitText text="Experience the tactile warmth in person." tag="h2" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight" />
           <p className="text-sm sm:text-base text-[#E2CEBD]/80 max-w-xl mx-auto font-sans">
             Our private flagship showrooms in Mumbai and Gurugram are open for private architectural consultations and material swatch sampling.
           </p>

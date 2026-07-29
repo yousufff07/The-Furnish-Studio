@@ -1,6 +1,7 @@
 import { Product, User, Order, Review, CategoryName } from '../types';
-import libraryStudyImg from '../assets/images/library_and_study_division_1784980750368.jpg';
 import { generateDivisionVarieties } from './divisionVarieties';
+import kitchenIslandImg from '../assets/images/kitchen_dining_island_1785070726586.jpg';
+import libraryStudyImg from '../assets/images/library_and_study_division_1784980750368.jpg';
 
 export const CATEGORIES_DATA: { name: CategoryName; image: string; description: string; count: number }[] = [
   {
@@ -77,7 +78,7 @@ export const CATEGORIES_DATA: { name: CategoryName; image: string; description: 
   },
   {
     name: 'Kitchen & Dining Island',
-    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80',
+    image: kitchenIslandImg,
     description: 'Monolithic travertine prep islands, solid brass bar stools, and oak pantry credenzas.',
     count: 25,
   },
@@ -91,12 +92,6 @@ export const CATEGORIES_DATA: { name: CategoryName; image: string; description: 
     name: 'Acoustic & Studio',
     image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80',
     description: 'Sound-dampening wool screens, ergonomic production consoles, and modular media racks.',
-    count: 25,
-  },
-  {
-    name: 'Wellness & Sanctuary',
-    image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80',
-    description: 'Hand-carved cedar meditation benches, stone soaking tubs, and organic linen loungers.',
     count: 25,
   },
   {
@@ -116,8 +111,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 89000,
     description: 'A masterpiece of Scandinavian mid-century proportions. The Astrid sofa features deep, cloud-like down feather cushioning upholstered in luxurious performance fabric with tapered kiln-dried solid walnut legs.',
     material: 'Fabric',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 12,
     rating: 4.9,
     reviewCount: 38,
@@ -142,8 +135,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 72000,
     description: 'Handcrafted from sustainably harvested European white oak. The Køben dining table comfortably seats six to eight guests, showcasing natural wood grain variations and subtle bevelled edges.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 8,
     rating: 4.8,
     reviewCount: 24,
@@ -166,8 +157,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 32000,
     description: 'An iconic silhouette that cradles the body with ergonomic precision. Features a powder-coated tubular steel frame and high-density foam cushions covered in premium bouclé fabric.',
     material: 'Metal',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 15,
     rating: 4.7,
     reviewCount: 19,
@@ -191,8 +180,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 95000,
     description: 'Bring Zen tranquility into your private sanctuary. Crafted with solid ash wood with an integrated upholstered headboard in warm greige linen and silent wooden slat system.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 6,
     rating: 5.0,
     reviewCount: 41,
@@ -215,8 +202,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 48500,
     description: 'An open-shelving modular system designed for the modern collector. Features alternating compartment heights crafted in warm teak veneer with matte black steel reinforcing rods.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 9,
     rating: 4.6,
     reviewCount: 15,
@@ -239,8 +224,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 42000,
     description: 'Designed for deep focus and clean cable management. Includes dual soft-close felt-lined drawers and a solid American walnut desktop resting on slim tapered steel legs.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 14,
     rating: 4.8,
     reviewCount: 27,
@@ -263,8 +246,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 44000,
     description: 'Elevate your terrace or poolside. Built from Grade-A teak that matures into a distinguished silver patina over time, paired with quick-dry Sunbrella fabric cushions.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 10,
     rating: 4.7,
     reviewCount: 12,
@@ -287,8 +268,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 14500,
     description: 'A glowing sculptural statement for credenzas and bedside tables. Cast from solid unlacquered brass with an opal blown-glass sphere diffuser diffusing warm ambient light.',
     material: 'Glass',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 25,
     rating: 4.9,
     reviewCount: 52,
@@ -310,12 +289,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 68000,
     description: 'Seamless fluted tambour doors slide open around curved corners to reveal adjustable interior shelving and cord pass-throughs. Finished in warm honey ash wood.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 7,
     rating: 4.8,
     reviewCount: 22,
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -334,8 +311,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 32000,
     description: 'Hand-loomed by master artisans using 100% New Zealand virgin wool. Features an understated geometric high-low pile weave in soothing organic greige tones.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 18,
     rating: 4.7,
     reviewCount: 31,
@@ -357,8 +332,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 46000,
     description: 'Top-grain aniline Italian saddle leather draped over a molded walnut plywood shell with pneumatic height adjustment and smooth-rolling castors.',
     material: 'Leather',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 11,
     rating: 4.9,
     reviewCount: 34,
@@ -381,8 +354,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 48000,
     description: 'A sublime juxtaposition of heavy natural beige travertine stone plinths and a half-inch thick tempered glass top with polished chamfered edges.',
     material: 'Glass',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 9,
     rating: 4.8,
     reviewCount: 18,
@@ -404,8 +375,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 18500,
     description: 'Soft rounded edges upholstered in textured slate bouclé with a solid marble top surface and soft-close storage drawer with brushed brass pull.',
     material: 'Mixed',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 20,
     rating: 4.7,
     reviewCount: 23,
@@ -428,8 +397,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 40000,
     description: 'Includes two sculptural armchairs handwoven with nautical-grade olefin rope and a matching terrazzo-topped bistro table. Completely UV and rust proof.',
     material: 'Mixed',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 8,
     rating: 4.8,
     reviewCount: 16,
@@ -451,8 +418,6 @@ const BASE_PRODUCTS: Product[] = [
     price: 28000,
     description: 'Sold as a set of two. Features gently sloped armrests and a supportive curved backrest upholstered in stain-resistant velvet over a solid ebonized ash frame.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 16,
     rating: 4.9,
     reviewCount: 29,
@@ -475,12 +440,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 62000,
     description: 'Inspired by Japanese joinery techniques, this low-profile coffee table is constructed entirely from solid American walnut without metal hardware. Features a floating top panel and subtle chamfered legs.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 14,
     rating: 4.9,
     reviewCount: 33,
-    imageUrl: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'
@@ -500,8 +463,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 75000,
     description: 'A cozy two-seater designed for intimate spaces and reading corners. Upholstered in tactile heavyweight greige bouclé with high-resilience foam and pocket-sprung core for unmatched comfort.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 9,
     rating: 4.8,
     reviewCount: 26,
@@ -523,12 +484,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 72000,
     description: 'A striking statement sideboard for the dining room. Features solid beige travertine marble top resting over fluted white oak cabinetry with push-to-open brass latches and interior glassware storage.',
     material: 'Mixed',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 6,
     rating: 5.0,
     reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -547,8 +506,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 56000,
     description: 'An homage to classic mid-century lounge design. Supple rust-toned Italian saddle leather strapped to a sculpted kiln-dried solid walnut frame. Reclines at an ergonomically perfected 15-degree angle.',
     material: 'Leather',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 11,
     rating: 4.9,
     reviewCount: 45,
@@ -570,12 +527,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 24000,
     description: 'Bring organic texture to your bedside. Handwoven natural cane rattan drawer fronts framed in solid teak wood with open lower display shelf for books and nighttime reading.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 18,
     rating: 4.7,
     reviewCount: 21,
-    imageUrl: 'https://images.unsplash.com/photo-1532372576444-dda954194ad0?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1532372576444-dda954194ad0?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -594,12 +549,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 69000,
     description: 'A modular architectural wall unit for home studios and private offices. Features three adjustable wide bookcases with an integrated drop-down workstation desk in European white oak.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 7,
     rating: 4.8,
     reviewCount: 17,
-    imageUrl: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -618,12 +571,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 86000,
     description: 'Host memorable open-air dinners. Constructed with thick mortise-and-tenon teak planks built to withstand year-round sun, rain, and coastal humidity without warping.',
     material: 'Wood',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 5,
     rating: 4.9,
     reviewCount: 14,
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -641,12 +592,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 14000,
     description: 'A trio of organic terracotta and stoneware vessels thrown by hand on the potter’s wheel. Features matte earthy textures in rust and chalk greige with waterproof glazed interiors.',
     material: 'Ceramic',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 30,
     rating: 4.8,
     reviewCount: 42,
-    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -665,12 +614,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 105000,
     description: 'A monumental storage centerpiece featuring vertical ribbed oak facades, soft-close German hinges, solid brass hanging rails, and three deep lower drawers lined in velvet.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 4,
     rating: 5.0,
     reviewCount: 11,
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1507842229356-51ce24260b1e?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -688,12 +635,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 22500,
     description: 'Suspended from a slender adjustable brass stem, natural Spanish alabaster stone discs emit a soft, ethereal glow that accentuates the unique mineral veining of each individual shade.',
     material: 'Glass',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 22,
     rating: 4.9,
     reviewCount: 28,
-    imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -712,12 +657,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 48000,
     description: 'An architectural column of solid brushed brass crowned with a carved Spanish alabaster diffuser. Projects a warm, ambient glow that elevates any study or reading corner.',
     material: 'Mixed',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 12,
     rating: 4.9,
     reviewCount: 18,
-    imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -736,12 +679,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 72000,
     description: 'Hand-knotted by master artisans using 100% undyed high-atlas mountain wool. Features a plush 1-inch pile with subtle organic diamond motifs in cream and warm greige tones.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 8,
     rating: 5.0,
     reviewCount: 24,
-    imageUrl: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -760,12 +701,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 95000,
     description: 'The ultimate statement for home hosting. Crafted from American walnut with fluted glass sliding doors, built-in stemware racks, and a polished beige marble serving surface.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 6,
     rating: 4.9,
     reviewCount: 15,
-    imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -783,12 +722,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 28000,
     description: 'Transform your bathroom into a serene Japanese bathhouse. Solid grade-A plantation teak frame supporting a smooth, water-resistant limestone seat with lower towel shelf.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 14,
     rating: 4.8,
     reviewCount: 22,
-    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1503602642458-23211144c65f?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -807,8 +744,6 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 65000,
     description: 'Designed to grow alongside your child. Made from non-toxic Baltic birch ply with rounded safety corners and adjustable mattress heights. Easily converts into a toddler daybed.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 9,
     rating: 5.0,
     reviewCount: 31,
@@ -830,12 +765,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 36000,
     description: 'Three hand-blown amber glass globes suspended at varying heights from an antique brass ceiling plate. Creates a dramatic focal point over dining tables or entryway stairwells.',
     material: 'Glass',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 15,
     rating: 4.8,
     reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -853,12 +786,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 18500,
     description: 'Two oversized floor cushions upholstered in heavyweight ivory and greige bouclé fabric with leather handles. Perfect for casual lounge seating and meditation spaces.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 25,
     rating: 4.9,
     reviewCount: 37,
-    imageUrl: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -877,12 +808,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 34000,
     description: 'Slender black powder-coated steel frame wrapped in thick Italian saddle leather that develops a rich patina over time. Ergonomic footrest wrapped in solid brass.',
     material: 'Leather',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 20,
     rating: 4.9,
     reviewCount: 29,
-    imageUrl: 'https://images.unsplash.com/photo-1503602642458-23211144c65f?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1519643381401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1503602642458-23211144c65f?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -900,12 +829,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 12500,
     description: 'Carved from a single block of beige honed travertine marble. Designed to span standard soaking tubs, providing a luxurious resting place for candles, bath salts, and reading material.',
     material: 'Stone',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 18,
     rating: 4.8,
     reviewCount: 16,
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1594683050417-64b54e7d1747?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -923,12 +850,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 26000,
     description: 'A child-sized version of our iconic mid-century lounge chair. Features kiln-dried oak legs and stain-resistant rust performance velvet designed for bedtime stories.',
     material: 'Fabric',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 16,
     rating: 5.0,
     reviewCount: 21,
-    imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -947,14 +872,12 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 380000,
     description: 'Carved from a single block of Roman travertine with honed edges and integrated overhang seating for four. Features internal brass-lined cutlery drawers.',
     material: 'Stone',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 4,
     rating: 4.9,
     reviewCount: 14,
-    imageUrl: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: kitchenIslandImg,
     galleryImages: [
-      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1556911220-cda25653a26d?auto=format&fit=crop&w=1000&q=80'
     ],
     dimensions: '84"L x 42"W x 36"H',
     weight: '280 kg',
@@ -970,12 +893,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 45000,
     description: 'Architectural counter stool featuring a steam-bent white oak backrest and solid unlacquered brass footrest. Upholstered in supple saddle leather.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 18,
     rating: 4.8,
     reviewCount: 22,
-    imageUrl: 'https://images.unsplash.com/photo-1503602642458-23211144c65f?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1503602642458-23211144c65f?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -993,12 +914,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 185000,
     description: 'A versatile dining pantry credenza with reeded solid walnut tambour doors and adjustable marble shelving inside. Perfect for displaying fine glassware and ceramics.',
     material: 'Wood',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 8,
     rating: 5.0,
     reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1017,12 +936,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 460000,
     description: 'An expansive architectural sectional designed for grand lobby spaces and high-ceiling lounges. Upholstered in heavy commercial-grade bouclé.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 3,
     rating: 4.9,
     reviewCount: 11,
-    imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1040,12 +957,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 160000,
     description: 'Hand-shaped from Italian alabaster stone with a translucent glow under natural light. Anchors formal sitting areas with effortless gravitas.',
     material: 'Stone',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 6,
     rating: 4.7,
     reviewCount: 15,
-    imageUrl: 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1063,12 +978,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 115000,
     description: 'A cocooning high-back armchair built on a smooth 360-degree brushed steel swivel base. Engineered for acoustic privacy in open hotel lobbies.',
     material: 'Leather',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 10,
     rating: 4.9,
     reviewCount: 27,
-    imageUrl: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1086,12 +999,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 78000,
     description: 'Three-panel folding partition upholstered in 100% merino wool felt with solid ash frames. Absorbs mid-to-high frequency reflections while defining studio zones.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 12,
     rating: 4.8,
     reviewCount: 18,
-    imageUrl: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1110,12 +1021,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 235000,
     description: 'Studio mastering and editing console with built-in 3U rackmount bays, cable management channels, and a padded wrist rest upholstered in vegan leather.',
     material: 'Wood',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 5,
     rating: 5.0,
     reviewCount: 16,
-    imageUrl: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1512212621149-107ffe572d2f?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1133,12 +1042,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 89000,
     description: 'Heavy-duty steel and walnut shelving unit designed for vinyl records, studio hardware, and reference monitors. Includes vibration-isolating spiked feet.',
     material: 'Metal',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 14,
     rating: 4.7,
     reviewCount: 20,
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1540518614846-7ede433c13ff?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1150,90 +1057,18 @@ const BASE_PRODUCTS: Product[] = [
     createdAt: '2026-02-22'
   },
   {
-    id: 'prod-45',
-    name: 'Hand-Carved Cedar Meditation Bench',
-    category: 'Wellness & Sanctuary',
-    price: 48000,
-    description: 'Ergonomically angled kneeling bench crafted from aromatic Western Red Cedar. Promotes spinal alignment during extended mindfulness sessions.',
-    material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
-    stock: 25,
-    rating: 4.9,
-    reviewCount: 34,
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
-    ],
-    dimensions: '20"W x 8"D x 7"H',
-    weight: '3.2 kg',
-    sku: 'FURN-WS-045',
-    isBestSeller: true,
-    isNew: false,
-    createdAt: '2026-01-05'
-  },
-  {
-    id: 'prod-46',
-    name: 'Monolithic River Stone Soaking Tub',
-    category: 'Wellness & Sanctuary',
-    price: 490000,
-    originalPrice: 550000,
-    description: 'Carved from a single boulder of natural river stone with a polished velvet interior. Retains bathwater heat for hours of meditative restoration.',
-    material: 'Stone',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
-    stock: 2,
-    rating: 5.0,
-    reviewCount: 9,
-    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80'
-    ],
-    dimensions: '70"L x 36"W x 24"H',
-    weight: '450 kg',
-    sku: 'FURN-WS-046',
-    isBestSeller: false,
-    isNew: true,
-    createdAt: '2026-03-10'
-  },
-  {
-    id: 'prod-47',
-    name: 'Organic Linen Chaise Lounger',
-    category: 'Wellness & Sanctuary',
-    price: 145000,
-    description: 'A low-slung relaxation chaise with natural latex foam padding wrapped in unbleached Belgian linen. Designed for sunrooms and private spa suites.',
-    material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
-    stock: 9,
-    rating: 4.8,
-    reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80'
-    ],
-    dimensions: '65"L x 30"W x 28"H',
-    weight: '38 kg',
-    sku: 'FURN-WS-047',
-    isBestSeller: false,
-    isNew: true,
-    createdAt: '2026-02-18'
-  },
-  {
     id: 'prod-48',
     name: 'Architectural Walnut Library Ladder',
     category: 'Library & Study',
     price: 125000,
     description: 'Custom-rolling library ladder constructed from solid American black walnut with solid brass guide rails and non-slip knurled rungs.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 7,
     rating: 4.9,
     reviewCount: 13,
-    imageUrl: 'https://images.unsplash.com/photo-1507842229356-51ce24260b1e?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: libraryStudyImg,
     galleryImages: [
-      'https://images.unsplash.com/photo-1507842229356-51ce24260b1e?auto=format&fit=crop&w=1000&q=80'
+      libraryStudyImg
     ],
     dimensions: '18"W x 4"D x 96"H',
     weight: '26 kg',
@@ -1250,12 +1085,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 220000,
     description: 'Deep diamond-tufted reading armchair upholstered in hand-distressed Italian top-grain leather with brass nailhead trim and down-blend seating.',
     material: 'Leather',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 8,
     rating: 5.0,
     reviewCount: 31,
-    imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1273,12 +1106,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 68000,
     description: 'Precision-balanced brass task lamp with a solid travertine counterweight base and warm 2700K integrated dimmable LED optic.',
     material: 'Metal',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 15,
     rating: 4.8,
     reviewCount: 24,
-    imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1505409628601-edc9af17fda6?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1296,12 +1127,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 52000,
     description: 'Set of three ribbed terracotta planters thrown by artisan potters. Engineered with internal drainage trays and frost-resistant clay bodies.',
     material: 'Ceramic',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 20,
     rating: 4.9,
     reviewCount: 29,
-    imageUrl: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1319,12 +1148,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 135000,
     description: 'Minimalist slatted garden bench crafted from sustainably harvested Grade-A teak. Designed to weather into a silvery patina when placed in outdoor galleries or garden seating areas.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 11,
     rating: 4.8,
     reviewCount: 17,
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1336,42 +1163,16 @@ const BASE_PRODUCTS: Product[] = [
     createdAt: '2026-02-14'
   },
   {
-    id: 'prod-53',
-    name: 'Basalt Stone Water Sanctuary Feature',
-    category: 'Wellness & Sanctuary',
-    price: 245000,
-    originalPrice: 275000,
-    description: 'A soothing sanctuary water feature featuring a hand-chiseled basalt sphere with a recirculating silent pump and warm underwater LED ambient lighting.',
-    material: 'Stone',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
-    stock: 5,
-    rating: 5.0,
-    reviewCount: 12,
-    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80',
-    galleryImages: [
-      'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80'
-    ],
-    dimensions: '30"D x 36"H',
-    weight: '140 kg',
-    sku: 'FURN-AB-053',
-    isBestSeller: false,
-    isNew: true,
-    createdAt: '2026-03-15'
-  },
-  {
     id: 'prod-54',
     name: 'Alabaster Linear Sconce',
     category: 'Lighting & Sculptures',
     price: 82000,
     description: 'Vertical wall sconce carved from natural Spanish alabaster with brass mounting brackets. Casts a soft, diffused glow across architectural hallways.',
     material: 'Stone',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 14,
     rating: 4.9,
     reviewCount: 21,
-    imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1389,12 +1190,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 110000,
     description: 'Artisanal Moroccan hallway runner woven from un-dyed virgin wool with plush pile depth and subtle organic linear patterns.',
     material: 'Fabric',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 9,
     rating: 5.0,
     reviewCount: 26,
-    imageUrl: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1412,12 +1211,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 165000,
     description: 'Mobile entertaining cart with two tiered walnut trays, leather-wrapped handles, and silent rubber-treaded brass caster wheels.',
     material: 'Wood',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 7,
     rating: 4.8,
     reviewCount: 18,
-    imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1435,12 +1232,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 54000,
     description: 'Slatted shower stool made from naturally water-resistant teak wood with stainless steel internal joinery. Ideal for luxury wet rooms.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 18,
     rating: 4.9,
     reviewCount: 32,
-    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1458,12 +1253,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 85000,
     description: 'Low-profile storage unit with pull-out felt bins and rounded child-safe safety corners. Finished with non-toxic natural water-based lacquer.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 12,
     rating: 4.8,
     reviewCount: 15,
-    imageUrl: 'https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1519643381401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1481,12 +1274,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 125000,
     description: 'Circular outdoor dining table constructed with radial teak slats and an umbrella center aperture. Accommodates four diners comfortably.',
     material: 'Wood',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 8,
     rating: 4.9,
     reviewCount: 14,
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1504,12 +1295,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 38000,
     description: 'Architectural decorative centerpiece carved from raw porous travertine stone. Perfect as a standalone sculptural accent on console tables.',
     material: 'Stone',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 22,
     rating: 5.0,
     reviewCount: 38,
-    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1527,12 +1316,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 385000,
     description: 'Floor-to-ceiling modular bookshelf crafted from solid American walnut with adjustable brass shelving brackets and integrated warm LED lighting.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 6,
     rating: 5.0,
     reviewCount: 18,
-    imageUrl: 'https://images.unsplash.com/photo-1594683050417-64b54e7d1747?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: libraryStudyImg,
     galleryImages: [
       'https://images.unsplash.com/photo-1594683050417-64b54e7d1747?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1551,12 +1338,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 280000,
     description: 'A monolithic writing desk designed for serious contemplation. Carved from sustainably sourced white oak with fluted pedestal legs and concealed leather drawer liners.',
     material: 'Wood',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 9,
     rating: 4.9,
     reviewCount: 24,
-    imageUrl: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1574,12 +1359,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 115000,
     description: 'Wall-mounted floating shelving unit with brushed brass uprights and hand-finished teak wood shelves. Perfect for rare volumes and architectural curiosities.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 14,
     rating: 4.8,
     reviewCount: 16,
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1596162954151-cdcb4c0f70a8?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1598,12 +1381,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 340000,
     description: 'An executive study desk featuring a solid steel cantilever frame wrapped in rich aniline saddle leather. Includes integrated cable management and brass hardware.',
     material: 'Leather',
-    color: 'slate',
-    availableColors: ['slate', 'rust', 'greige'],
     stock: 5,
     rating: 5.0,
     reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1621,12 +1402,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 42000,
     description: 'A cozy bedroom essential woven from unbleached 100% Belgian flax linen with hand-stitched borders and breathable all-season thermal loft.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 15,
     rating: 4.9,
     reviewCount: 22,
-    imageUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1645,12 +1424,10 @@ const BASE_PRODUCTS: Product[] = [
     originalPrice: 240000,
     description: 'An architectural statement credenza featuring reeded solid white oak tambour doors, internal wine racking, and warm brushed brass hardware.',
     material: 'Wood',
-    color: 'rust',
-    availableColors: ['rust', 'slate', 'greige'],
     stock: 8,
     rating: 5.0,
     reviewCount: 19,
-    imageUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1668,12 +1445,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 34000,
     description: 'Woven from long-staple Belgian flax linen with delicate eyelash fringe detailing and an enzyme-washed ultra-soft drape for living spaces and bedrooms.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 25,
     rating: 4.8,
     reviewCount: 31,
-    imageUrl: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80'
     ],
@@ -1691,12 +1466,10 @@ const BASE_PRODUCTS: Product[] = [
     price: 38000,
     description: 'A breathable spa hamper crafted from unbleached organic linen with a removable washable internal bag and a folding solid teak frame.',
     material: 'Fabric',
-    color: 'greige',
-    availableColors: ['greige', 'rust', 'slate'],
     stock: 18,
     rating: 4.9,
     reviewCount: 14,
-    imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
       'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80'
     ],

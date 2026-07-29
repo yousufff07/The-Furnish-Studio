@@ -139,7 +139,7 @@ export const OrderConfirmation: React.FC = () => {
                       {prod ? prod.name : `Catalog Item (${item.productId})`}
                     </h4>
                     <p className="text-xs text-[#8D9399] font-sans">
-                      Qty: {item.quantity} &middot; Tone: <span className="capitalize font-semibold text-[#1E1A17]">{item.selectedColor}</span>
+                      Qty: {item.quantity}
                     </p>
                   </div>
                 </div>

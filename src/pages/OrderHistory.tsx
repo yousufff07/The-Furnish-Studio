@@ -97,7 +97,7 @@ export const OrderHistory: React.FC = () => {
                         {prod ? prod.name : `Piece (${item.productId})`}
                       </h4>
                       <p className="text-xs text-[#8D9399] font-sans">
-                        Qty: {item.quantity} &middot; Tone: <span className="capitalize font-semibold text-[#1E1A17]">{item.selectedColor}</span>
+                        Qty: {item.quantity}
                       </p>
                       <p className="text-xs font-mono font-semibold text-[#964627] mt-0.5">
                         ₹{(item.price * item.quantity).toLocaleString('en-IN')}

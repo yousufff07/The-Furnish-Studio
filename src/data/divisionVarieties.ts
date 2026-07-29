@@ -24,7 +24,6 @@ const CATEGORIES_LIST: CategoryName[] = [
   'Kitchen & Dining Island',
   'Lounge & Lobby',
   'Acoustic & Studio',
-  'Wellness & Sanctuary',
   'Library & Study'
 ];
 
@@ -43,51 +42,48 @@ export function generateDivisionVarieties(baseProducts: Product[]): Product[] {
     }
   });
 
+  const existingNames = new Set(baseProducts.map(p => p.name));
+  const usedImages = new Set<string>(baseProducts.map(p => p.imageUrl));
   const generated: Product[] = [];
   let nextId = maxIdNum + 1;
 
   for (const catName of CATEGORIES_LIST) {
     const templates = ALL_VARIETIES[catName] || [];
     const currentCount = existingCounts[catName] || 0;
-    const needed = Math.max(0, 25 - currentCount);
+    let addedForCat = 0;
     
     const images = CATEGORY_IMAGES[catName] || [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80'
     ];
 
-    for (let i = 0; i < needed; i++) {
-      const template = templates[i % templates.length] || {
-        name: `${catName} Bespoke Piece`,
-        price: 45000,
-        material: 'Wood',
-        color: 'rust' as ToneColor,
-        desc: `Exquisite custom handcrafted piece designed for ${catName.toLowerCase()} settings.`,
-        dimensions: '72"W x 34"D x 30"H'
-      };
+    const limit = Math.min(templates.length, images.length);
+    for (let i = 0; i < limit; i++) {
+      const template = templates[i];
+      if (existingNames.has(template.name)) continue;
+      existingNames.add(template.name);
 
       const skuCat = catName
         .split(' ')
         .map(w => w[0])
         .join('')
         .toUpperCase();
-      const skuNum = String(currentCount + i + 1).padStart(3, '0');
+      const skuNum = String(currentCount + addedForCat + 1).padStart(3, '0');
 
-      const nameSuffix = i >= templates.length ? ` II` : '';
-      const imgIdx = i % images.length;
-      const imgUrl = images[imgIdx];
-      const galleryImg2 = images[(imgIdx + 1) % images.length];
-      const galleryImg3 = images[(imgIdx + 2) % images.length];
+      const imgUrl = images[i];
+      if (usedImages.has(imgUrl)) continue;
+      usedImages.add(imgUrl);
+
+      const galleryImg2 = images[(i + 1) % images.length];
+      const galleryImg3 = images[(i + 2) % images.length];
 
       const newProduct: Product = {
         id: `prod-${nextId++}`,
-        name: `${template.name}${nameSuffix}`,
+        name: template.name,
         category: catName,
         price: template.price,
         originalPrice: Math.round(template.price * 1.15),
         description: template.desc,
         material: template.material,
-        color: template.color,
-        availableColors: ['rust', 'slate', 'greige'],
         stock: Math.floor(Math.random() * 14) + 6,
         rating: Number((4.6 + (i % 4) * 0.1).toFixed(1)),
         reviewCount: Math.floor(Math.random() * 35) + 14,
@@ -102,6 +98,7 @@ export function generateDivisionVarieties(baseProducts: Product[]): Product[] {
       };
 
       generated.push(newProduct);
+      addedForCat++;
     }
   }
 

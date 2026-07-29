@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import heroSectionalImg from '../assets/images/hero_living_room_sectional_1784999212289.jpg';
+import kitchenIslandImg from '../assets/images/kitchen_dining_island_1785070726586.jpg';
 import { ProductCard } from '../components/common/ProductCard';
 import { Rating } from '../components/common/Rating';
 import Counter from '../components/common/Counter';
@@ -127,25 +128,50 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Hero Image */}
+            {/* Right Hero Image with Architectural Fade */}
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
               className="lg:col-span-6 relative"
             >
               <div className="relative mx-auto max-w-lg lg:max-w-none">
-                <div className="aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#F8ECE1] relative group">
+                <div className="aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl border border-[#EBD8C6]/50 relative group bg-[#1E1A17]">
                   <img
                     src={heroSectionalImg}
                     alt="The Sovereign Modular Sectional in architectural living room"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out opacity-95"
                   />
+                  
+                  {/* Primary Cinematic Gradient Fade Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/85 via-[#1E1A17]/30 to-transparent pointer-events-none transition-opacity duration-700 group-hover:opacity-90" />
+                  
+                  {/* Warm Architectural Side & Top Fade */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#1E1A17]/40 via-transparent to-[#1E1A17]/20 pointer-events-none mix-blend-multiply opacity-70" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#1E1A17]/20 via-transparent to-transparent pointer-events-none opacity-50" />
+                  
+                  {/* Inner Soft Vignette Shadow */}
+                  <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(30,26,23,0.4)] pointer-events-none rounded-3xl" />
+
+                  {/* Editorial Glassmorphism Badge embedded inside the faded zone */}
+                  <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 pointer-events-none text-white z-10">
+                    <div className="backdrop-blur-md bg-[#1E1A17]/60 px-5 py-3.5 rounded-2xl border border-white/15 shadow-xl transition-all duration-300 group-hover:bg-[#1E1A17]/70">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#CCA37E] animate-pulse" />
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E]">Architectural Sanctuary</span>
+                      </div>
+                      <p className="font-serif text-base sm:text-lg font-bold text-[#F8ECE1] leading-tight">The Sovereign Sectional</p>
+                      <p className="text-xs text-[#EBD8C6]/85 font-sans mt-0.5">Bespoke modular living in sun-drenched Alabaster fabric</p>
+                    </div>
+                    <div className="backdrop-blur-md bg-white/15 px-4 py-2 rounded-xl border border-white/20 text-xs font-mono text-[#F8ECE1] self-start sm:self-end shrink-0">
+                      Lookbook Vol. IV
+                    </div>
+                  </div>
                 </div>
                 
-                {/* Decorative Accent Pill */}
-                <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#EBD8C6]/50 rounded-full blur-2xl -z-10" />
-                <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-[#CCA37E]/30 rounded-full blur-2xl -z-10" />
+                {/* Decorative Ambient Glow & Fade Pills */}
+                <div className="absolute -top-6 -right-6 w-36 h-36 bg-[#EBD8C6]/60 rounded-full blur-3xl -z-10" />
+                <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-[#CCA37E]/30 rounded-full blur-3xl -z-10" />
               </div>
             </motion.div>
 
@@ -180,7 +206,7 @@ export const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-1">Architectural Divisions</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]">Shop by Category</h2>
+            <SplitText text="Shop by Category" tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]" />
           </div>
           <button
             onClick={() => navigate('shop', { category: 'All' })}
@@ -264,114 +290,125 @@ export const Home: React.FC = () => {
           })}
         </div>
 
-        {/* Natural Tones Feature Row with Particular Division Pictures */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 min-h-[220px]">
-          <div 
-            onClick={() => navigate('shop', { category: 'Living Room' })}
-            className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
-          >
-            <img
-              src={categories.find(c => c.name === 'Living Room')?.image || ''}
-              alt="Living Room Division"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Division Spotlight</span>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Living Room</h3>
-                <p className="text-xs text-[#EBD8C6] mt-0.5">36 Architectural Pieces</p>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
-                <ArrowRight className="w-4 h-4" />
+        {/* Material & Craft Studios Feature Row */}
+        <div className="mt-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-6">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Architectural Palette</span>
+              <SplitText text="Curated Material & Craft Studios" tag="h3" className="font-serif text-2xl font-bold text-[#1E1A17]" />
+            </div>
+            <p className="text-sm text-[#8D9399] mt-2 md:mt-0 max-w-sm">
+              Explore our architectural furniture organized by primary material and tactile finishes.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 min-h-[220px]">
+            <div 
+              onClick={() => navigate('shop', { material: 'Wood' })}
+              className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800&q=80"
+                alt="Solid Wood Studio"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Kiln-Dried Hardwoods</span>
+                  <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Solid Oak & Walnut</h3>
+                  <p className="text-xs text-[#EBD8C6] mt-0.5">Steam-Bent & Carved</p>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div 
-            onClick={() => navigate('shop', { category: 'Bedroom' })}
-            className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
-          >
-            <img
-              src={categories.find(c => c.name === 'Bedroom')?.image || ''}
-              alt="Bedroom Division"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Division Spotlight</span>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Bedroom</h3>
-                <p className="text-xs text-[#EBD8C6] mt-0.5">24 Serene Essentials</p>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
-                <ArrowRight className="w-4 h-4" />
+            
+            <div 
+              onClick={() => navigate('shop', { material: 'Stone' })}
+              className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
+            >
+              <img
+                src={kitchenIslandImg}
+                alt="Stone & Marble Studio"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Monolithic Stone</span>
+                  <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Travertine & Stone</h3>
+                  <p className="text-xs text-[#EBD8C6] mt-0.5">Honed Italian Slabs</p>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div 
-            onClick={() => navigate('shop', { category: 'Dining Room' })}
-            className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
-          >
-            <img
-              src={categories.find(c => c.name === 'Dining Room')?.image || ''}
-              alt="Dining Room Division"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">New Arrival</span>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Dining Room</h3>
-                <p className="text-xs text-[#EBD8C6] mt-0.5">18 Statement Tables</p>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          </div>
-
-          <div 
-            onClick={() => navigate('shop', { category: 'Office Furniture' })}
-            className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
-          >
-            <img
-              src={categories.find(c => c.name === 'Office Furniture')?.image || ''}
-              alt="Office Furniture Division"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Executive Study</span>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Office Furniture</h3>
-                <p className="text-xs text-[#EBD8C6] mt-0.5">15 Ergonomic Desks</p>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
-                <ArrowRight className="w-4 h-4" />
+            <div 
+              onClick={() => navigate('shop', { material: 'Leather' })}
+              className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+                alt="Supple Leather Studio"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Full-Grain Hides</span>
+                  <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Saddle Leather</h3>
+                  <p className="text-xs text-[#EBD8C6] mt-0.5">Aniline & Top-Grain</p>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div 
-            onClick={() => navigate('shop', { category: 'Library & Study' })}
-            className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60 sm:col-span-2 lg:col-span-1"
-          >
-            <img
-              src={categories.find(c => c.name === 'Library & Study')?.image || ''}
-              alt="Library & Study Division"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
-            <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Architectural Study</span>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Library & Study</h3>
-                <p className="text-xs text-[#EBD8C6] mt-0.5">24 Classic Pieces</p>
+            <div 
+              onClick={() => navigate('shop', { material: 'Metal' })}
+              className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80"
+                alt="Patinated Metal Studio"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Unlacquered Metal</span>
+                  <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Patinated Brass</h3>
+                  <p className="text-xs text-[#EBD8C6] mt-0.5">Hand-Spun & Aged</p>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
-              <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
-                <ArrowRight className="w-4 h-4" />
+            </div>
+
+            <div 
+              onClick={() => navigate('shop', { material: 'Fabric' })}
+              className="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer aspect-[4/3] sm:aspect-auto sm:h-60 sm:col-span-2 lg:col-span-1"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80"
+                alt="Textile & Weaves Studio"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-6 flex items-end justify-between text-[#F8ECE1]">
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#CCA37E] block mb-1">Hand-Woven Fibers</span>
+                  <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#CCA37E] transition-colors">Bouclé & Weaves</h3>
+                  <p className="text-xs text-[#EBD8C6] mt-0.5">Belgian Linen & Wool</p>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-[#CCA37E] group-hover:text-[#1E1A17] flex items-center justify-center transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
           </div>
@@ -383,7 +420,7 @@ export const Home: React.FC = () => {
         <div className="flex items-end justify-between mb-10">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-1">Curated Favorites</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]">Best-Selling Statements</h2>
+            <SplitText text="Best-Selling Statements" tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]" />
           </div>
           <button
             onClick={() => navigate('shop', { category: 'All' })}
@@ -407,9 +444,7 @@ export const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block">Materiality & Form</span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E1A17] leading-tight">
-                Crafted for a lifetime of comfort and quiet presence.
-              </h2>
+              <SplitText text="Crafted for a lifetime of comfort and quiet presence." tag="h2" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E1A17] leading-tight" />
               <p className="text-base text-[#1E1A17]/80 leading-relaxed font-sans">
                 Every piece in our collection is an ode to traditional joinery and modern ergonomics. We partner with family-owned mills across Scandinavia and northern Italy to source unlacquered solid brass, vegetable-tanned saddle leathers, and breathable linen weaves.
               </p>
@@ -464,7 +499,7 @@ export const Home: React.FC = () => {
           <div className="flex items-end justify-between mb-10">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-1">Just Arrived</span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]">The 2026 Spring Additions</h2>
+              <SplitText text="The 2026 Spring Additions" tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17]" />
             </div>
             <button
               onClick={() => navigate('shop', { category: 'All' })}
@@ -486,7 +521,7 @@ export const Home: React.FC = () => {
       {/* 6. Testimonials Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-2">Voices of our Patrons</span>
-        <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17] mb-12">Praise from Discerning Homes</h2>
+        <SplitText text="Praise from Discerning Homes" tag="h2" className="font-serif text-3xl sm:text-4xl font-bold text-[#1E1A17] mb-12" />
 
         <div className="bg-[#F3E5D8]/80 rounded-3xl p-8 sm:p-12 shadow-xl border border-[#EBD8C6] relative">
           <Quote className="w-12 h-12 text-[#CCA37E]/30 mx-auto mb-6" />
@@ -529,9 +564,7 @@ export const Home: React.FC = () => {
         <div className="bg-gradient-to-r from-[#5E402B] to-[#964627] rounded-3xl p-8 sm:p-14 text-center text-[#F8ECE1] shadow-2xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
             <span className="text-xs font-mono uppercase tracking-widest text-[#EBD8C6] block">The Studio Journal</span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-              An invitation to mindful design.
-            </h2>
+            <SplitText text="An invitation to mindful design." tag="h2" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight" />
             <p className="text-sm sm:text-base text-[#E2CEBD]/90 font-sans">
               Join our architectural newsletter for first access to limited editions, bespoke material swatches, and private showroom events.
             </p>

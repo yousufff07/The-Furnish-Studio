@@ -5,6 +5,9 @@ import {
   ChevronDown, ShieldAlert, Package, LogOut 
 } from 'lucide-react';
 import { CategoryName } from '../../types';
+import SpecularButton from './SpecularButton';
+import LineSidebar from './LineSidebar';
+import MagicBento from './MagicBento';
 
 export const Navbar: React.FC = () => {
   const { 
@@ -17,6 +20,7 @@ export const Navbar: React.FC = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(searchQuery);
+  const [categoryViewMode, setCategoryViewMode] = useState<'grid' | 'list'>('grid');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -81,59 +85,139 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium uppercase tracking-widest">
-            <button
+          <nav className="hidden lg:flex items-center gap-2 text-sm font-medium uppercase tracking-widest">
+            <SpecularButton
+              size="sm"
+              radius={14}
               onClick={() => navigate('home')}
-              className={`transition-colors ${activeRoute === 'home' ? 'text-[#CCA37E] font-bold' : 'text-[#1E1A17]/80 hover:text-[#CCA37E]'}`}
+              textColor={activeRoute === 'home' ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={12}
+              autoAnimate={activeRoute === 'home'}
+              className="font-medium"
             >
               Home
-            </button>
-            <button
+            </SpecularButton>
+            <SpecularButton
+              size="sm"
+              radius={14}
               onClick={() => navigate('shop', { category: 'All' })}
-              className={`transition-colors ${activeRoute === 'shop' && !isCategoryDropdownOpen ? 'text-[#CCA37E] font-bold' : 'text-[#1E1A17]/80 hover:text-[#CCA37E]'}`}
+              textColor={activeRoute === 'shop' && !isCategoryDropdownOpen ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={12}
+              autoAnimate={activeRoute === 'shop' && !isCategoryDropdownOpen}
+              className="font-medium"
             >
               Shop
-            </button>
+            </SpecularButton>
 
             {/* Categories Dropdown */}
             <div className="relative" ref={dropdownRef}>
-              <button
+              <SpecularButton
+                size="sm"
+                radius={14}
                 onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-                className="flex items-center gap-1 text-sm font-medium uppercase tracking-widest text-[#1E1A17]/80 hover:text-[#CCA37E] transition-colors focus:outline-none"
+                textColor={isCategoryDropdownOpen || (activeRoute === 'shop' && isCategoryDropdownOpen) ? '#AD7C52' : '#1E1A17'}
+                baseColor="#D4C4B4"
+                lineColor="#AD7C52"
+                intensity={1.5}
+                shineSize={12}
+                autoAnimate={isCategoryDropdownOpen}
+                className="font-medium"
               >
-                Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCategoryDropdownOpen ? 'rotate-180 text-[#CCA37E]' : ''}`} />
-              </button>
+                Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCategoryDropdownOpen ? 'rotate-180 text-[#AD7C52]' : ''}`} />
+              </SpecularButton>
 
               {isCategoryDropdownOpen && (
-                <div className="absolute top-full left-0 mt-3 w-72 max-h-[80vh] overflow-y-auto bg-[#F8ECE1] border border-[#EBD8C6] shadow-2xl rounded-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 normal-case tracking-normal">
-                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#8D9399] sticky top-0 bg-[#F8ECE1] z-10 border-b border-[#EBD8C6]/50">
-                    Curated Divisions ({categories.length})
+                <div className="absolute top-full left-0 mt-3 w-[720px] max-w-[90vw] max-h-[85vh] overflow-y-auto bg-[#F8ECE1] border border-[#EBD8C6] shadow-2xl rounded-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-200 normal-case tracking-normal">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#EBD8C6]/80 sticky top-0 bg-[#F8ECE1] z-20">
+                    <div>
+                      <h3 className="text-sm font-serif font-bold text-[#1E1A17]">Curated Studio Divisions</h3>
+                      <p className="text-xs text-[#8D9399]">Select a division to explore handcrafted collections</p>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex items-center bg-[#EBD8C6]/70 p-0.5 rounded-lg border border-[#D4C4B4]">
+                        <button
+                          onClick={() => setCategoryViewMode('grid')}
+                          className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all ${
+                            categoryViewMode === 'grid'
+                              ? 'bg-[#1E1A17] text-white shadow-sm'
+                              : 'text-[#1E1A17] hover:text-[#AD7C52]'
+                          }`}
+                        >
+                          Bento Grid
+                        </button>
+                        <button
+                          onClick={() => setCategoryViewMode('list')}
+                          className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all ${
+                            categoryViewMode === 'list'
+                              ? 'bg-[#1E1A17] text-white shadow-sm'
+                              : 'text-[#1E1A17] hover:text-[#AD7C52]'
+                          }`}
+                        >
+                          Line List
+                        </button>
+                      </div>
+                      <span className="px-2.5 py-1 bg-[#F3E5D8] text-[#AD7C52] text-xs font-bold rounded-full">
+                        {categories.length}
+                      </span>
+                    </div>
                   </div>
+
                   <div className="py-1">
-                    {categories.map((cat) => (
-                      <button
-                        key={cat.name}
-                        onClick={() => handleCategoryClick(cat.name)}
-                        className="w-full text-left px-3 py-2 text-sm text-[#1E1A17]/80 hover:bg-[#F3E5D8] hover:text-[#AD7C52] transition-colors flex items-center justify-between gap-2.5"
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <img
-                            src={cat.image}
-                            alt={cat.name}
-                            className="w-7 h-7 rounded-lg object-cover flex-shrink-0 border border-black/10 shadow-sm"
-                          />
-                          <span className="truncate font-medium">{cat.name}</span>
-                        </div>
-                        <span className="text-xs text-[#8D9399] font-mono flex-shrink-0">({cat.count})</span>
-                      </button>
-                    ))}
+                    {categoryViewMode === 'grid' ? (
+                      <MagicBento
+                        cards={categories.map((cat, idx) => {
+                          const darkPalettes = ['#181412', '#1C1614', '#1F1815', '#171311', '#211916', '#1A1513'];
+                          return {
+                            title: cat.name,
+                            description: cat.description,
+                            label: `${cat.count} Pieces`,
+                            color: darkPalettes[idx % darkPalettes.length],
+                          };
+                        })}
+                        glowColor="173, 124, 82"
+                        spotlightRadius={280}
+                        particleCount={8}
+                        enableStars={true}
+                        enableSpotlight={true}
+                        enableBorderGlow={true}
+                        enableTilt={true}
+                        enableMagnetism={true}
+                        clickEffect={true}
+                        onCardClick={(card) => handleCategoryClick(card.title as CategoryName)}
+                      />
+                    ) : (
+                      <div className="py-2 px-2 max-w-md mx-auto">
+                        <LineSidebar
+                          items={categories.map((cat) => cat.name)}
+                          accentColor="#AD7C52"
+                          textColor="#1E1A17"
+                          markerColor="#D4C4B4"
+                          markerLength={24}
+                          markerGap={6}
+                          maxShift={12}
+                          itemGap={12}
+                          fontSize={0.9}
+                          showIndex={true}
+                          showMarker={true}
+                          proximityRadius={100}
+                          onItemClick={(_, label) => handleCategoryClick(label as CategoryName)}
+                        />
+                      </div>
+                    )}
                   </div>
-                  <div className="border-t border-[#EBD8C6] my-1 pt-1 sticky bottom-0 bg-[#F8ECE1] z-10">
+
+                  <div className="border-t border-[#EBD8C6] mt-4 pt-3 sticky bottom-0 bg-[#F8ECE1] z-20 flex items-center justify-between">
                     <button
                       onClick={() => { navigate('shop', { category: 'All' }); setIsCategoryDropdownOpen(false); }}
-                      className="w-full text-left px-4 py-2 text-sm font-semibold text-[#AD7C52] hover:bg-[#F3E5D8] transition-colors flex items-center justify-between"
+                      className="w-full py-2.5 px-4 bg-[#1E1A17] hover:bg-[#AD7C52] text-white rounded-xl text-sm font-semibold transition-colors flex items-center justify-between shadow-md"
                     >
-                      <span>Explore All Catalog</span>
+                      <span>Explore Entire Catalog ({categories.reduce((acc, c) => acc + c.count, 0)} Items)</span>
                       <span>&rarr;</span>
                     </button>
                   </div>
@@ -141,18 +225,34 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            <button
+            <SpecularButton
+              size="sm"
+              radius={14}
               onClick={() => navigate('about')}
-              className={`transition-colors ${activeRoute === 'about' ? 'text-[#CCA37E] font-bold' : 'text-[#1E1A17]/80 hover:text-[#CCA37E]'}`}
+              textColor={activeRoute === 'about' ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={12}
+              autoAnimate={activeRoute === 'about'}
+              className="font-medium"
             >
               About
-            </button>
-            <button
+            </SpecularButton>
+            <SpecularButton
+              size="sm"
+              radius={14}
               onClick={() => navigate('contact')}
-              className={`transition-colors ${activeRoute === 'contact' ? 'text-[#CCA37E] font-bold' : 'text-[#1E1A17]/80 hover:text-[#CCA37E]'}`}
+              textColor={activeRoute === 'contact' ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={12}
+              autoAnimate={activeRoute === 'contact'}
+              className="font-medium"
             >
               Contact
-            </button>
+            </SpecularButton>
           </nav>
 
           {/* Right Side Icons */}
@@ -178,50 +278,68 @@ export const Navbar: React.FC = () => {
                   </button>
                 </form>
               ) : (
-                <button
+                <SpecularButton
+                  size="icon"
+                  radius={20}
                   onClick={() => setIsSearchOpen(true)}
-                  className="p-2 text-[#1E1A17] hover:text-[#AD7C52] transition-colors rounded-full hover:bg-[#F3E5D8]"
-                  aria-label="Search catalog"
-                  title="Search catalog"
+                  textColor="#1E1A17"
+                  baseColor="#D4C4B4"
+                  lineColor="#AD7C52"
+                  intensity={1.5}
+                  shineSize={14}
                 >
                   <Search className="w-5 h-5" />
-                </button>
+                </SpecularButton>
               )}
             </div>
 
             {/* Wishlist Icon */}
-            <button
+            <SpecularButton
+              size="icon"
+              radius={20}
               onClick={() => navigate('wishlist')}
-              className="relative p-2 text-[#1E1A17] hover:text-[#AD7C52] transition-colors rounded-full hover:bg-[#F3E5D8]"
-              aria-label="Wishlist"
-              title="Saved Wishlist"
+              textColor={activeRoute === 'wishlist' ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={14}
+              autoAnimate={activeRoute === 'wishlist' || wishlist.length > 0}
+              className="relative"
             >
               <Heart className="w-5 h-5" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#AD7C52] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-[#AD7C52] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
                   {wishlist.length}
                 </span>
               )}
-            </button>
+            </SpecularButton>
 
             {/* Cart Icon */}
-            <button
+            <SpecularButton
+              size="icon"
+              radius={20}
               onClick={() => navigate('cart')}
-              className="relative p-2 text-[#1E1A17] hover:text-[#AD7C52] transition-colors rounded-full hover:bg-[#F3E5D8]"
-              aria-label="Shopping Cart"
-              title="Shopping Cart"
+              textColor={activeRoute === 'cart' ? '#AD7C52' : '#1E1A17'}
+              baseColor="#D4C4B4"
+              lineColor="#AD7C52"
+              intensity={1.5}
+              shineSize={14}
+              autoAnimate={activeRoute === 'cart' || cartCount > 0}
+              className="relative"
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#CCA37E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-[#CCA37E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               )}
-            </button>
+            </SpecularButton>
 
             {/* Account / Profile Dropdown */}
             <div className="relative" ref={userMenuRef}>
-              <button
+              <SpecularButton
+                size={user ? 'sm' : 'icon'}
+                radius={20}
                 onClick={() => {
                   if (!user) {
                     navigate('auth');
@@ -229,19 +347,21 @@ export const Navbar: React.FC = () => {
                     setIsUserMenuOpen(!isUserMenuOpen);
                   }
                 }}
-                className={`p-2 rounded-full transition-colors flex items-center gap-1.5 ${
-                  user ? 'bg-[#F3E5D8] text-[#964627] font-semibold text-xs pr-3' : 'text-[#1E1A17] hover:text-[#964627] hover:bg-[#F3E5D8]'
-                }`}
-                aria-label="Account"
-                title={user ? user.name : 'Sign in'}
+                textColor={isUserMenuOpen || user ? '#AD7C52' : '#1E1A17'}
+                baseColor="#D4C4B4"
+                lineColor="#AD7C52"
+                intensity={1.5}
+                shineSize={14}
+                autoAnimate={isUserMenuOpen}
+                className="transition-colors"
               >
                 {user?.avatar ? (
-                  <img src={user.avatar} alt={user.name} className="w-6 h-6 rounded-full object-cover ring-1 ring-[#CCA37E]" />
+                  <img src={user.avatar} alt={user.name} className="w-5 h-5 rounded-full object-cover ring-1 ring-[#CCA37E]" />
                 ) : (
                   <UserIcon className="w-5 h-5" />
                 )}
-                {user && <span className="hidden md:inline max-w-[80px] truncate">{user.name.split(' ')[0]}</span>}
-              </button>
+                {user && <span className="hidden md:inline max-w-[80px] truncate font-semibold text-xs">{user.name.split(' ')[0]}</span>}
+              </SpecularButton>
 
               {isUserMenuOpen && user && (
                 <div className="absolute right-0 mt-3 w-56 bg-[#F8ECE1] border border-[#EBD8C6] shadow-2xl rounded-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
@@ -343,22 +463,75 @@ export const Navbar: React.FC = () => {
 
             {/* Mobile Categories */}
             <div className="border-t border-[#EBD8C6] pt-3">
-              <p className="px-3 text-xs font-bold uppercase tracking-wider text-[#8D9399] mb-2">Divisions</p>
-              <div className="grid grid-cols-2 gap-1.5 px-1 max-h-[40vh] overflow-y-auto">
-                {categories.map(cat => (
+              <div className="flex items-center justify-between px-3 mb-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#8D9399]">Divisions ({categories.length})</p>
+                <div className="flex items-center bg-[#EBD8C6]/70 p-0.5 rounded-lg border border-[#D4C4B4]">
                   <button
-                    key={cat.name}
-                    onClick={() => handleCategoryClick(cat.name)}
-                    className="text-left px-2.5 py-1.5 text-sm text-[#1E1A17]/80 hover:text-[#964627] hover:bg-[#F3E5D8]/60 rounded-xl transition-colors flex items-center gap-2"
+                    onClick={() => setCategoryViewMode('grid')}
+                    className={`px-2 py-0.5 text-[10px] font-semibold rounded ${
+                      categoryViewMode === 'grid' ? 'bg-[#1E1A17] text-white' : 'text-[#1E1A17]'
+                    }`}
                   >
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-6 h-6 rounded-md object-cover flex-shrink-0 border border-black/10 shadow-sm"
-                    />
-                    <span className="truncate text-xs font-medium">{cat.name}</span>
+                    Grid
                   </button>
-                ))}
+                  <button
+                    onClick={() => setCategoryViewMode('list')}
+                    className={`px-2 py-0.5 text-[10px] font-semibold rounded ${
+                      categoryViewMode === 'list' ? 'bg-[#1E1A17] text-white' : 'text-[#1E1A17]'
+                    }`}
+                  >
+                    List
+                  </button>
+                </div>
+              </div>
+              <div className="px-1 py-1 max-h-[50vh] overflow-y-auto">
+                {categoryViewMode === 'grid' ? (
+                  <MagicBento
+                    cards={categories.map((cat, idx) => {
+                      const darkPalettes = ['#181412', '#1C1614', '#1F1815', '#171311', '#211916', '#1A1513'];
+                      return {
+                        title: cat.name,
+                        description: cat.description,
+                        label: `${cat.count} Pieces`,
+                        color: darkPalettes[idx % darkPalettes.length],
+                      };
+                    })}
+                    glowColor="173, 124, 82"
+                    spotlightRadius={180}
+                    particleCount={6}
+                    enableStars={true}
+                    enableSpotlight={true}
+                    enableBorderGlow={true}
+                    enableTilt={false}
+                    enableMagnetism={false}
+                    clickEffect={true}
+                    onCardClick={(card) => {
+                      handleCategoryClick(card.title as CategoryName);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  />
+                ) : (
+                  <div className="px-2">
+                    <LineSidebar
+                      items={categories.map((cat) => cat.name)}
+                      accentColor="#AD7C52"
+                      textColor="#1E1A17"
+                      markerColor="#D4C4B4"
+                      markerLength={18}
+                      markerGap={6}
+                      maxShift={10}
+                      itemGap={12}
+                      fontSize={0.875}
+                      showIndex={true}
+                      showMarker={true}
+                      proximityRadius={80}
+                      onItemClick={(_, label) => {
+                        handleCategoryClick(label as CategoryName);
+                        setIsMobileMenuOpen(false);
+                      }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

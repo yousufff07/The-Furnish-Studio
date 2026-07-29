@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { Rating } from '../components/common/Rating';
 import { ProductCard } from '../components/common/ProductCard';
-import { ToneColor } from '../types';
+import SplitText from '../components/common/SplitText';
 import { 
   Heart, ShoppingBag, Truck, ShieldCheck, RefreshCw, 
   ArrowLeft, Check, Share2, Plus, Minus, MessageSquare, Star 
 } from 'lucide-react';
-import { getToneConfig, ToneImageOverlay } from '../utils/toneStyles';
 
 export const ProductDetails: React.FC = () => {
   const { products, selectedProductId, navigate, addToCart, toggleWishlist, isInWishlist, reviews, addReview, user, showToast } = useApp();
@@ -20,7 +19,6 @@ export const ProductDetails: React.FC = () => {
     : [product.imageUrl];
 
   const [activeImageIdx, setActiveImageIdx] = useState(0);
-  const [selectedColor, setSelectedColor] = useState<ToneColor>(product.color || 'rust');
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'reviews'>('desc');
 
@@ -30,10 +28,9 @@ export const ProductDetails: React.FC = () => {
 
   const productReviews = reviews.filter(r => r.productId === product.id);
   const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
-  const toneConfig = getToneConfig(selectedColor);
 
   const handleAddToCart = () => {
-    addToCart(product.id, quantity, selectedColor, product.material);
+    addToCart(product.id, quantity, product.color || 'rust', product.material);
   };
 
   const handleReviewSubmit = (e: React.FormEvent) => {
@@ -86,22 +83,14 @@ export const ProductDetails: React.FC = () => {
             <img
               src={gallery[activeImageIdx]}
               alt={`${product.name} view ${activeImageIdx + 1}`}
-              style={{ filter: toneConfig.imageFilter }}
               className="w-full h-full object-cover transition-all duration-500 relative z-0"
             />
-            <ToneImageOverlay color={selectedColor} />
             
             {product.isBestSeller && (
               <span className="absolute top-4 left-4 bg-[#CCA37E] text-[#1E1A17] text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md z-10">
                 Studio Best Seller
               </span>
             )}
-            <span 
-              className="absolute top-4 left-4 bg-white/90 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md border border-white/50 z-10 ml-36"
-              style={{ color: toneConfig.hex }}
-            >
-              {toneConfig.name} Finish
-            </span>
             
             <button
               onClick={handleShare}
@@ -124,10 +113,9 @@ export const ProductDetails: React.FC = () => {
                       ? 'ring-2 ring-offset-1 scale-105 shadow-sm' 
                       : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
-                  style={{ borderColor: activeImageIdx === idx ? toneConfig.hex : 'transparent' }}
+                  style={{ borderColor: activeImageIdx === idx ? '#964627' : 'transparent' }}
                 >
-                  <img src={imgUrl} alt="Thumbnail" style={{ filter: toneConfig.imageFilter }} className="w-full h-full object-cover relative z-0" />
-                  <ToneImageOverlay color={selectedColor} />
+                  <img src={imgUrl} alt="Thumbnail" className="w-full h-full object-cover relative z-0" />
                 </button>
               ))}
             </div>
@@ -170,38 +158,6 @@ export const ProductDetails: React.FC = () => {
                   Save {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
                 </span>
               )}
-            </div>
-
-            {/* Tone Selector */}
-            <div className="space-y-2.5 pt-6">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-[#8D9399] uppercase tracking-wider">Tone:</span>
-                <span className="font-bold capitalize" style={{ color: toneConfig.hex }}>{toneConfig.name}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                {(product.availableColors || ['rust', 'slate', 'greige']).map((col) => {
-                  const swatchCfg = getToneConfig(col);
-                  const isSelected = selectedColor === col;
-                  return (
-                    <button
-                      key={col}
-                      onClick={() => setSelectedColor(col)}
-                      style={{ borderColor: isSelected ? swatchCfg.hex : undefined }}
-                      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all ${
-                        isSelected 
-                          ? 'bg-[#F3E5D8] ring-2 ring-offset-2 shadow-sm font-bold scale-105' 
-                          : 'border-[#EBD8C6] bg-[#F8ECE1] hover:border-[#CCA37E] opacity-80 hover:opacity-100'
-                      }`}
-                    >
-                      <span 
-                        className="w-5 h-5 rounded-full border border-black/10 shadow-sm transition-transform" 
-                        style={{ backgroundColor: swatchCfg.hex }} 
-                      />
-                      <span className="text-xs font-bold capitalize text-[#1E1A17]">{swatchCfg.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
             </div>
 
             {/* Quantity and Stock */}
@@ -248,11 +204,10 @@ export const ProductDetails: React.FC = () => {
               <button
                 onClick={handleAddToCart}
                 disabled={product.stock <= 0}
-                style={{ backgroundColor: toneConfig.hex, color: '#F8ECE1' }}
-                className="flex-1 py-4 px-6 font-serif font-bold text-base rounded-xl shadow-lg transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110 hover:scale-[1.01]"
+                className="flex-1 py-4 px-6 bg-[#1E1A17] hover:bg-[#964627] text-[#F8ECE1] font-serif font-bold text-base rounded-xl shadow-lg transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110 hover:scale-[1.01]"
               >
                 <ShoppingBag className="w-5 h-5" />
-                <span>Add to Studio Cart ({toneConfig.name})</span>
+                <span>Add to Studio Cart</span>
               </button>
 
               <button
@@ -371,10 +326,6 @@ export const ProductDetails: React.FC = () => {
                 <span className="font-semibold text-[#1E1A17]">{product.material}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-[#EBD8C6]">
-                <span className="text-[#8D9399]">Tone</span>
-                <span className="font-semibold text-[#1E1A17] capitalize">{product.color}</span>
-              </div>
-              <div className="flex justify-between py-3 border-b border-[#EBD8C6]">
                 <span className="text-[#8D9399]">Assembly Required</span>
                 <span className="font-semibold text-[#1E1A17]">No (White-Glove Assembly Included)</span>
               </div>
@@ -431,7 +382,7 @@ export const ProductDetails: React.FC = () => {
 
             {/* Add Review Form (Col 5) */}
             <div className="lg:col-span-5 bg-[#F8ECE1] p-6 sm:p-8 rounded-2xl border border-[#CCA37E] shadow-md h-fit">
-              <h3 className="font-serif font-bold text-xl text-[#1E1A17] mb-2">Write a Studio Review</h3>
+              <SplitText text="Write a Studio Review" tag="h3" className="font-serif font-bold text-xl text-[#1E1A17] mb-2" />
               <p className="text-xs text-[#8D9399] mb-6">
                 Share your impressions on craftsmanship, materiality, and comfort with fellow patrons.
               </p>
@@ -483,7 +434,7 @@ export const ProductDetails: React.FC = () => {
           <div className="flex items-end justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#964627] block mb-1">Harmonious Pairings</span>
-              <h2 className="font-serif text-3xl font-bold text-[#1E1A17]">Related {product.category} Pieces</h2>
+              <SplitText text={`Related ${product.category} Pieces`} tag="h2" className="font-serif text-3xl font-bold text-[#1E1A17]" />
             </div>
             <button
               onClick={() => navigate('shop', { category: product.category })}

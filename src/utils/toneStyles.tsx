@@ -21,8 +21,8 @@ export const TONE_CONFIGS: Record<ToneColor, ToneVisualConfig> = {
     borderClass: 'border-[#964627]',
     textClass: 'text-[#964627]',
     ringClass: 'ring-[#964627]',
-    imageFilter: 'sepia(0.38) saturate(1.45) hue-rotate(-15deg) contrast(1.05)',
-    overlayGradient: 'linear-gradient(135deg, rgba(150, 70, 39, 0.45), rgba(180, 85, 45, 0.35))',
+    imageFilter: 'none',
+    overlayGradient: 'radial-gradient(ellipse 68% 68% at 50% 55%, rgba(180, 80, 40, 0.85) 0%, rgba(150, 65, 30, 0.5) 45%, transparent 78%)',
     overlayOpacity: 1
   },
   slate: {
@@ -32,8 +32,8 @@ export const TONE_CONFIGS: Record<ToneColor, ToneVisualConfig> = {
     borderClass: 'border-[#5A6E82]',
     textClass: 'text-[#5A6E82]',
     ringClass: 'ring-[#5A6E82]',
-    imageFilter: 'saturate(0.65) hue-rotate(185deg) contrast(1.08) brightness(0.95)',
-    overlayGradient: 'linear-gradient(135deg, rgba(70, 95, 120, 0.45), rgba(55, 75, 95, 0.35))',
+    imageFilter: 'none',
+    overlayGradient: 'radial-gradient(ellipse 68% 68% at 50% 55%, rgba(70, 95, 125, 0.85) 0%, rgba(55, 75, 105, 0.5) 45%, transparent 78%)',
     overlayOpacity: 1
   },
   greige: {
@@ -43,8 +43,8 @@ export const TONE_CONFIGS: Record<ToneColor, ToneVisualConfig> = {
     borderClass: 'border-[#A89F91]',
     textClass: 'text-[#A89F91]',
     ringClass: 'ring-[#A89F91]',
-    imageFilter: 'sepia(0.2) saturate(0.85) contrast(1.02) brightness(1.03)',
-    overlayGradient: 'linear-gradient(135deg, rgba(185, 175, 160, 0.4), rgba(200, 190, 175, 0.3))',
+    imageFilter: 'none',
+    overlayGradient: 'radial-gradient(ellipse 68% 68% at 50% 55%, rgba(185, 175, 160, 0.85) 0%, rgba(165, 155, 140, 0.5) 45%, transparent 78%)',
     overlayOpacity: 1
   }
 };
@@ -58,6 +58,11 @@ export function getToneConfig(color?: ToneColor | string): ToneVisualConfig {
 
 export const ToneImageOverlay: React.FC<{ color?: ToneColor | string }> = ({ color }) => {
   const config = getToneConfig(color);
+  const maskStyle = {
+    maskImage: 'radial-gradient(ellipse 68% 68% at 50% 55%, black 15%, transparent 78%)',
+    WebkitMaskImage: 'radial-gradient(ellipse 68% 68% at 50% 55%, black 15%, transparent 78%)'
+  };
+
   return (
     <>
       <div 
@@ -65,7 +70,8 @@ export const ToneImageOverlay: React.FC<{ color?: ToneColor | string }> = ({ col
         style={{ 
           background: config.overlayGradient, 
           mixBlendMode: 'color',
-          opacity: config.overlayOpacity 
+          opacity: config.overlayOpacity,
+          ...maskStyle
         }}
       />
       <div 
@@ -73,7 +79,8 @@ export const ToneImageOverlay: React.FC<{ color?: ToneColor | string }> = ({ col
         style={{ 
           background: config.overlayGradient, 
           mixBlendMode: 'soft-light',
-          opacity: 0.5 
+          opacity: 0.6,
+          ...maskStyle
         }}
       />
     </>

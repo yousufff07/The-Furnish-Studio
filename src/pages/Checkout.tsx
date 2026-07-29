@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { Address, PaymentMethod } from '../types';
+import SplitText from '../components/common/SplitText';
 import { 
   CreditCard, ShieldCheck, Truck, CheckCircle2, Plus, 
   MapPin, AlertCircle, Lock, ArrowLeft 
@@ -124,7 +125,7 @@ export const Checkout: React.FC = () => {
             <div className="flex items-center justify-between">
               <h2 className="font-serif font-bold text-xl text-[#1E1A17] flex items-center gap-2">
                 <span className="w-7 h-7 rounded-full bg-[#1E1A17] text-[#F8ECE1] text-xs flex items-center justify-center font-mono">1</span>
-                <span>Delivery Address</span>
+                <SplitText text="Delivery Address" tag="span" />
               </h2>
               {user && user.addresses.length > 0 && (
                 <button
@@ -258,7 +259,7 @@ export const Checkout: React.FC = () => {
           <div className="bg-[#F3E5D8]/40 border border-[#EBD8C6] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
             <h2 className="font-serif font-bold text-xl text-[#1E1A17] flex items-center gap-2">
               <span className="w-7 h-7 rounded-full bg-[#1E1A17] text-[#F8ECE1] text-xs flex items-center justify-center font-mono">2</span>
-              <span>Payment Gateway (Mocked)</span>
+              <SplitText text="Payment Gateway (Mocked)" tag="span" />
             </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -381,9 +382,7 @@ export const Checkout: React.FC = () => {
         {/* Right Order Summary & Submit (Col 5) */}
         <div className="lg:col-span-5">
           <div className="bg-[#F3E5D8]/80 rounded-3xl p-6 sm:p-8 border border-[#EBD8C6] shadow-xl sticky top-28 space-y-6">
-            <h2 className="font-serif font-bold text-xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]">
-              Order Verification
-            </h2>
+            <SplitText text="Order Verification" tag="h2" className="font-serif font-bold text-xl text-[#1E1A17] pb-4 border-b border-[#EBD8C6]" />
 
             {/* Mini Line Items */}
             <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
@@ -396,7 +395,7 @@ export const Checkout: React.FC = () => {
                       <img src={prod.imageUrl} alt="" className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                       <div className="truncate">
                         <p className="font-serif font-bold text-[#1E1A17] truncate">{prod.name}</p>
-                        <p className="text-[10px] text-[#8D9399]">Qty: {item.quantity} &middot; Tone: <span className="capitalize">{item.selectedColor}</span></p>
+                        <p className="text-[10px] text-[#8D9399]">Qty: {item.quantity}</p>
                       </div>
                     </div>
                     <span className="font-mono font-semibold text-[#1E1A17] flex-shrink-0">

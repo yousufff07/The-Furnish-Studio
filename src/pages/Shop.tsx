@@ -71,13 +71,7 @@ export const Shop: React.FC = () => {
       if (prod.price > filters.priceRange[1]) return false;
       // 4. Materials
       if (filters.materials.length > 0 && !filters.materials.includes(prod.material)) return false;
-      // 5. Colors
-      if (filters.colors.length > 0) {
-        const prodColors = prod.availableColors || [prod.color];
-        const hasColor = filters.colors.some(c => prodColors.includes(c));
-        if (!hasColor) return false;
-      }
-      // 6. In stock
+      // 5. In stock
       if (filters.inStockOnly && prod.stock <= 0) return false;
       // 7. Rating min
       if (prod.rating < filters.ratingMin) return false;
@@ -271,7 +265,7 @@ export const Shop: React.FC = () => {
           </div>
 
           {/* Active Filter Badges */}
-          {(filters.category !== 'All' || filters.materials.length > 0 || filters.colors.length > 0 || searchQuery || filters.inStockOnly || filters.ratingMin > 0) && (
+          {(filters.category !== 'All' || filters.materials.length > 0 || searchQuery || filters.inStockOnly || filters.ratingMin > 0) && (
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <span className="text-xs text-[#8D9399]">Active Refinements:</span>
               {filters.category !== 'All' && (
@@ -290,12 +284,6 @@ export const Shop: React.FC = () => {
                 <span key={mat} className="inline-flex items-center gap-1.5 bg-[#EBD8C6] text-[#964627] text-xs font-semibold px-2.5 py-1 rounded-full">
                   {mat}
                   <button onClick={() => setFilters({ ...filters, materials: filters.materials.filter(m => m !== mat) })} className="hover:text-[#1E1A17]"><X className="w-3 h-3" /></button>
-                </span>
-              ))}
-              {filters.colors.map(col => (
-                <span key={col} className="inline-flex items-center gap-1.5 bg-[#EBD8C6] text-[#964627] text-xs font-semibold capitalize px-2.5 py-1 rounded-full">
-                  {col}
-                  <button onClick={() => setFilters({ ...filters, colors: filters.colors.filter(c => c !== col) })} className="hover:text-[#1E1A17]"><X className="w-3 h-3" /></button>
                 </span>
               ))}
               {filters.inStockOnly && (
@@ -328,7 +316,7 @@ export const Shop: React.FC = () => {
               <PackageOpen className="w-12 h-12 text-[#CCA37E] mx-auto mb-3" />
               <h3 className="font-serif font-bold text-xl text-[#1E1A17] mb-1">No catalog pieces match your criteria</h3>
               <p className="text-sm text-[#8D9399] max-w-md mx-auto mb-6">
-                Try expanding your price range, clearing color filters, or searching for broader architectural terms.
+                Try expanding your price range, clearing refinement filters, or searching for broader architectural terms.
               </p>
               <button
                 onClick={handleResetFilters}
